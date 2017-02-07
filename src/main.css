@@ -67,18 +67,10 @@ p {
 
 	& li {
 		line-height: 1.5em;
-	}
-
-	& a {
-		font-weight: 600;
-
-		/*&:after {
-			content: attr(href);
-			color: black;
-			font-size: small;
-			font-weight: 100;
-			margin-left: 1em;
-		}*/
+    cursor: pointer;
+    &.active {
+      color: orangered;
+    }
 	}
 }
 

@@ -1,11 +1,41 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 /* Stylesheets */
 require('purecss');
 require('./main.css');
 
+
+/* Data */
+import clients from './data/clients.js';
+
+/* Components */
+import View from './components/View';
+import SiteList from './components/SiteList';
+
 class App extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      samples: clients.samples,
+      winnowSamples: clients.winnowSamples,
+      currentSite: null
+    }
+  }
+
+  changeCurrentSite(siteName) {
+    const allClients = this.state.samples.concat(this.state.winnowSamples);
+    const found = allClients.filter( (site) => {
+      return site.sitename === siteName;
+    });
+    if (found) {
+      this.setState({
+        currentSite: found[0]
+      })
+    }
+  }
+
   render () {
     return (
       <div id="app">
@@ -20,31 +50,20 @@ class App extends React.Component {
           <section id="clients">
             <h2>Work Samples</h2>
             <p className="description">The following are samples of websites I have developed for clients.</p>
-            <ul className="clients-list site-list">
-              <li><a href="http://globalgoalslab.org/" target="_blank">The Global Goals Lab</a></li>
-              <li><a href="http://littlesun.com/" target="_blank">Little Sun</a></li>
-              <li><a href="http://colorama.space/" target="_blank">Colorama</a></li>
-              <li><a href="http://roughbeastmagazine.com/" target="_blank">Rough Beast Magazine</a></li>
-              <li><a href="http://danubesounds.net/" target="_blank">Danube Sounds</a></li>
-            </ul>
+            <SiteList 
+              list={this.state.samples} 
+              changeSite={this.changeCurrentSite.bind(this)} 
+              currentSiteName={this.state.currentSite != null ? this.state.currentSite.sitename : null} 
+            />
           </section>
           <section id="winnow">
             <h2>Working with <a href="http://winnowcreative.com">Winnow Creative</a></h2>
             <p className="description">The following is a selection of Wordpress sites I have developed for the design/branding firm Winnow Creative.</p>
-            <ul className="winnow-list site-list">
-              <li><a href="http://www.avconusa.com/" target="_blank">AVCON</a></li> 
-              <li><a href="http://www.accbox.com/" target="_blank">Axis Corrugated Container</a></li> 
-              <li><a href="http://criticalfuelsystems.com/" target="_blank">Critical Fuel Systems</a></li> 
-              <li><a href="http://curtiscc.com/" target="_blank">Curtis Construction Co.</a></li> 
-              <li><a href="http://www.flex-pay.com/" target="_blank">Flexpay</a></li> 
-              <li><a href="http://nccertifiedcareerpathways.com/" target="_blank">NCWorks Certified Career Pathways</a></li> 
-              <li><a href="https://www.sciencecloud.com/" target="_blank">Science Cloud</a></li> 
-              <li><a href="http://southeasterninteriors.com/" target="_blank">Southeastern Interiors</a></li> 
-              <li><a href="https://thewinefeed.com/" target="_blank">The Wine Feed</a></li> 
-              <li><a href="http://www.trademarkproperties.com/" target="_blank">Trademark Properties</a></li> 
-              <li><a href="http://www.trademarkresidential.com/" target="_blank">Trademark Residential</a></li> 
-              <li><a href="http://www.triangleilg.org/" target="_blank">Triangle Industry Liaison Group</a></li>
-            </ul>
+            <SiteList 
+              list={this.state.winnowSamples} 
+              changeSite={this.changeCurrentSite.bind(this)} 
+              currentSiteName={this.state.currentSite != null ? this.state.currentSite.sitename : null} 
+            />
           </section>
           <section id="contact">
             <h2>Contact Me</h2>
@@ -63,13 +82,7 @@ class App extends React.Component {
             </form>
           </section>
         </div>
-        <div id="view">
-          <div className="view__container">
-            <h2 className="site-title">Little Sun</h2>
-            <p className="site-info">2016. Berlin, Germany</p>
-            <p className="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum eaque doloribus, minima iusto, corporis placeat fugit, aliquid dolor, quo porro expedita consectetur illum pariatur! Quisquam voluptatibus hic, id ducimus quas.</p>
-          </div>
-        </div>
+        <View site={this.state.currentSite}/>
       </div>
     );
   } // render
