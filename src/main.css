@@ -1,0 +1,19 @@
+:root {
+	--green: #ff00ff;
+}
+
+body {
+	margin: 1em;
+}
+
+.container {
+	max-width: 40em;
+	margin: 0 auto;
+}
+
+.contact-form {
+
+	& input, & textarea {
+		width: 100%;
+	}
+}

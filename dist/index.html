@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rob Gordon's Portfolio</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Rob Gordon's Portfolio</h1>
+    <section id="about-me">
+      <p>I am full-stack web developer with 5 years of professional experience. I specialize in Wordpress development, and I have experience working with many other content management systems as well as javascript frameworks.</p>
+      <p>I’m particularly interested in augmenting Wordpress development with React and Web Components.</p>
+    </section>
+    <section id="clients">
+      <h2>Work Samples</h2>
+      <p class="description">The following is a list of sites developed with Winnow Creative.</p>
+    </section>
+    <section id="winnow">
+      <h2>Working with Winnow Creative</h2>
+      <p class="description">The following is a selection of sites I have developed for the design/branding firm Winnow Creative.</p>
+      <ul class="winnow-sites-list">
+        <li><a href="#">AVCON</a></li> 
+        <li><a href="#">Axis Corrugated Container</a></li> 
+        <li><a href="#">Critical Fuel Systems</a></li> 
+        <li><a href="#">Curtis Construction Co.</a></li> 
+        <li><a href="#">Flexpay</a></li> 
+        <li><a href="#">NCWorks Certified Career Pathways</a></li> 
+        <li><a href="#">Science Cloud</a></li> 
+        <li><a href="#">Southeastern Interiors</a></li> 
+        <li><a href="#">The Wine Feed</a></li> 
+        <li><a href="#">Trademark Properties</a></li> 
+        <li><a href="#">Trademark Residential</a></li> 
+        <li><a href="#">Triangle Industry Liaison Group</a></li>
+      </ul>
+    </section>
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form action="contact.php" class="contact-form pure-form pure-form-stacked" method="post">
+        <fieldset>
+          <input type="text" placeholder="Name" name="user_name"><br>
+          <input type="text" placeholder="Email" name="user_email"><br>
+          <textarea placeholder="Message" name="user_message"></textarea><br>
+          <label for="request_cv">Request a copy of my CV: <input type="checkbox" name="request_cv"></label>
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
+    </section>
+  </div>
+  <script src="bundle.js"></script>
+</body>
+</html>
