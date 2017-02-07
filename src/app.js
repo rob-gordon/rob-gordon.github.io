@@ -1,5 +1,4 @@
-'use strict';
 
-require('./base-min.css');
-require('./forms-min.css');
+
+require('purecss');
 require('./main.css');

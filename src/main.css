@@ -1,19 +1,100 @@
 :root {
-	--green: #ff00ff;
+	--color1: seagreen;
+	--lightgray: color(lightgray lightness(30%));
 }
 
 body {
-	margin: 1em;
+	margin: 0;
+	padding: 0;
+	line-height: 1.5em;
+	font-family: 'Muli';
+	background: whitesmoke;
+}
+
+#app {
+	& > div {
+		padding: 2em;
+	}
+}
+
+#main {
+	background: white;
+}
+
+#main, .view__container {
+	max-width: 410px;
+}
+
+#view {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: calc(410px + 4em);
+	background: whitesmoke;
+	border-left: solid 1px lightgray;
+}
+
+a {
+	text-decoration: none;
+}
+
+section {
+	margin: 3em 0;
+}
+
+#about-me {
+	margin-top: 0;
 }
 
 .container {
-	max-width: 40em;
-	margin: 0 auto;
+}
+
+p {
+	//font-weight: 100;
+}
+
+.introduction {
+	font-size: 18px;
+}
+
+.winnow-color {
+}
+
+.site-list {
+	list-style: none;
+	padding-left: 0;
+
+	& li {
+		line-height: 1.5em;
+	}
+
+	& a {
+		font-weight: 600;
+
+		/*&:after {
+			content: attr(href);
+			color: black;
+			font-size: small;
+			font-weight: 100;
+			margin-left: 1em;
+		}*/
+	}
+}
+
+.winnow-sites-list {
 }
 
 .contact-form {
+	background: whitesmoke;
+	padding: 1em;
+	border: solid 1px lightgray;
 
-	& input, & textarea {
+	& input:not([type=checkbox]), & textarea {
 		width: 100%;
 	}
+}
+
+.site-info {
+	font-weight: 600;
 }
