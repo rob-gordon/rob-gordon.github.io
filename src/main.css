@@ -6,8 +6,6 @@
 body {
 	margin: 0;
 	padding: 0;
-	line-height: 1.5em;
-	//font-family: 'Muli';
 	background: whitesmoke;
 }
 
@@ -45,45 +43,39 @@ body {
 
 a {
 	text-decoration: none;
-  color: blue;
+  color: #0078e7;
 }
 
-section {
+/*section {
 	margin: 3em 0;
-}
+}*/
 
 #about-me {
 	margin-top: 0;
 }
 
-.introduction {
+/*.introduction {
 	font-size: 18px;
+}*/
+
+ul {
+  list-style: none;
+  padding: 0;
 }
 
 .site-list {
-	list-style: none;
 	padding-left: 0;
-  color: #888;
+  margin-bottom: 2em;
 
 	& li {
 		line-height: 1.5em;
     cursor: pointer;
-    font-size: 1.15em;
 
     &.active {
       font-weight: 700;
       color: black;
+      border-bottom: solid 1px whitesmoke;
     }
-	}
-}
-
-.contact-form {
-	background: whitesmoke;
-	padding: 1em;
-	border: solid 1px lightgray;
-
-	& input:not([type=checkbox]), & textarea {
-		width: 100%;
 	}
 }
 
@@ -96,8 +88,6 @@ section {
   transition: color 300ms ease;
 }
 
-
-
 .video_list__toggle {
   list-style: none;
   padding: 0;
@@ -108,13 +98,12 @@ section {
     text-transform: capitalize;
     cursor: pointer;
     padding: .5em 0;
-    border: solid 1px color(whitesmoke lightness(80%));
+    //border: solid 1px color(whitesmoke lightness(80%));
     margin-right: .5em;
     width: 100px;
     text-align: center;
 
-    &.active {
-      font-weight: 700;
+    &:not(.active) {
       background: color(whitesmoke lightness(80%));
     }
 
@@ -141,5 +130,11 @@ section {
     border-radius: 3px;
     box-shadow: 6px 8px color(lightgray lightness(45%));
     max-height: 450px;
+  }
+}
+
+.social-media-links {
+  & li {
+    margin-bottom: 1em;
   }
 }

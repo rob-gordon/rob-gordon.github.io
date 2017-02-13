@@ -67,20 +67,15 @@ class App extends React.Component {
             />
           </section>
           <section id="contact">
-            <h2>Contact Me</h2>
-            <form action="contact.php" className="contact-form pure-form pure-form-stacked" method="post">
-              <fieldset>
-                <input type="text" placeholder="Name" name="user_name"/>
-                <input type="text" placeholder="Email" name="user_email"/>
-                <textarea placeholder="Message" name="user_message" rows="6"></textarea>
-                <br/>
-                <label htmlFor="request_cv" className="pure-checkbox">
-                  Request CV <input type="checkbox" name="request_cv"/>
-                </label>
-                <br/>
-                <button type="submit" className="pure-button pure-button-primary">Submit</button>
-              </fieldset>
-            </form>
+            <h2>Get in Touch</h2>
+            <ul className="social-media-links">
+              <li>
+                rchristopher.gordon@gmail.com
+              </li>
+              <li>
+                <a href="https://github.com/rob-gordon" target="_blank"><img src="src/resources/github.svg" alt="Github" width="40"/></a>
+              </li>
+            </ul>
           </section>
         </div>
         <View site={this.state.currentSite}/>

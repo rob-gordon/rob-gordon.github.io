@@ -9823,16 +9823,20 @@ var SiteList = function (_React$Component2) {
           {
             key: index,
             onClick: _this3.changeCurrentSite.bind(_this3, item.sitename),
-            className: item.sitename === _this3.props.currentSiteName ? 'active' : ''
+            className: item.sitename === _this3.props.currentSiteName ? 'pure-menu-item active pure-menu-link' : 'pure-menu-item pure-menu-link'
           },
           item.sitename
         );
       });
 
       return _react2.default.createElement(
-        'ul',
-        { className: 'site-list' },
-        list
+        'div',
+        { className: 'pure-menu' },
+        _react2.default.createElement(
+          'ul',
+          { className: 'site-list pure-menu-list' },
+          list
+        )
       );
     } //render
 
@@ -9938,7 +9942,7 @@ var VideoToggle = function (_React$Component2) {
           {
             key: index,
             onClick: _this3.changeVideo.bind(_this3, key),
-            className: key === _this3.props.activeVideo ? 'active' : null
+            className: key === _this3.props.activeVideo ? 'active pure-button pure-button-primary' : 'pure-button pure-button-primary'
           },
           key
         );
@@ -10079,8 +10083,8 @@ var View = function (_React$Component4) {
                 ' ',
                 _react2.default.createElement(
                   'a',
-                  { href: '{site.url}' },
-                  _react2.default.createElement('i', { className: 'icons icon-link' })
+                  { href: site.url, target: '_blank' },
+                  '\uD83D\uDD17'
                 )
               ),
               _react2.default.createElement(VideoToggle, {
@@ -10333,7 +10337,7 @@ exports = module.exports = __webpack_require__(53)();
 
 
 // module
-exports.push([module.i, "body {\n\tmargin: 0;\n\tpadding: 0;\n\tline-height: 1.5em;\n\t//font-family: 'Muli';\n\tbackground: whitesmoke;\n}\n\n#main, .view__container {\n  padding: 2em;\n}\n\n.video_list {\n  position: absolute;\n  top: 186px;\n  width: 100%;\n  border-top: solid 3px rgb(204, 204, 204);\n  left: 0;\n  bottom: 0;\n  background: rgb(230, 230, 230);\n  -webkit-transition: all 300ms ease;\n  transition: all 300ms ease;\n}\n\n#main {\n\tbackground: white;\n  max-width: 410px;\n}\n\n#view {\n\tposition: fixed;\n\ttop: 0;\n\tright: 0;\n\tbottom: 0;\n\tleft: calc(410px + 4em);\n\tbackground: whitesmoke;\n\tborder-left: solid 1px lightgray;\n  -webkit-transition: all 300ms ease;\n  transition: all 300ms ease;\n  overflow-y: auto;\n}\n\na {\n\ttext-decoration: none;\n  color: blue;\n}\n\nsection {\n\tmargin: 3em 0;\n}\n\n#about-me {\n\tmargin-top: 0;\n}\n\n.introduction {\n\tfont-size: 18px;\n}\n\n.site-list {\n\tlist-style: none;\n\tpadding-left: 0;\n  color: #888\n}\n\n.site-list li {\n\tline-height: 1.5em;\n\tcursor: pointer;\n\tfont-size: 1.15em;\n}\n\n.site-list li.active {\n\tfont-weight: 700;\n\tcolor: black;\n}\n\n.contact-form {\n\tbackground: whitesmoke;\n\tpadding: 1em;\n\tborder: solid 1px lightgray\n}\n\n.contact-form input:not([type=checkbox]), .contact-form textarea {\n\twidth: 100%;\n}\n\n.site-description {\n\tfont-weight: 700;\n}\n\n.site-title {\n  margin: 0;\n  -webkit-transition: color 300ms ease;\n  transition: color 300ms ease;\n}\n\n.video_list__toggle {\n  list-style: none;\n  padding: 0;\n  margin: 0\n}\n\n.video_list__toggle li {\n\tdisplay: inline-block;\n\ttext-transform: capitalize;\n\tcursor: pointer;\n\tpadding: .5em 0;\n\tborder: solid 1px rgb(204, 204, 204);\n\tmargin-right: .5em;\n\twidth: 100px;\n\ttext-align: center;\n}\n\n.video_list__toggle li.active {\n\tfont-weight: 700;\n\tbackground: rgb(204, 204, 204);\n}\n\n.video_list__videos {\n  list-style: none;\n  padding: 0;\n  margin: 0\n}\n\n.video_list__videos li {\n\t-webkit-transition: all 300ms ease;\n\ttransition: all 300ms ease;\n}\n\n.video_list__videos video {\n\tposition: absolute;\n\ttop: 50%;\n\tleft: 50%;\n\t-webkit-transform: translateX(-50%) translateY(-50%);\n\t        transform: translateX(-50%) translateY(-50%);\n\tborder-radius: 3px;\n\tbox-shadow: 6px 8px rgb(115, 115, 115);\n\tmax-height: 450px;\n}", ""]);
+exports.push([module.i, "body {\n\tmargin: 0;\n\tpadding: 0;\n\tbackground: whitesmoke;\n}\n\n#main, .view__container {\n  padding: 2em;\n}\n\n.video_list {\n  position: absolute;\n  top: 186px;\n  width: 100%;\n  border-top: solid 3px rgb(204, 204, 204);\n  left: 0;\n  bottom: 0;\n  background: rgb(230, 230, 230);\n  -webkit-transition: all 300ms ease;\n  transition: all 300ms ease;\n}\n\n#main {\n\tbackground: white;\n  max-width: 410px;\n}\n\n#view {\n\tposition: fixed;\n\ttop: 0;\n\tright: 0;\n\tbottom: 0;\n\tleft: calc(410px + 4em);\n\tbackground: whitesmoke;\n\tborder-left: solid 1px lightgray;\n  -webkit-transition: all 300ms ease;\n  transition: all 300ms ease;\n  overflow-y: auto;\n}\n\na {\n\ttext-decoration: none;\n  color: #0078e7;\n}\n\n/*section {\n\tmargin: 3em 0;\n}*/\n\n#about-me {\n\tmargin-top: 0;\n}\n\n/*.introduction {\n\tfont-size: 18px;\n}*/\n\nul {\n  list-style: none;\n  padding: 0;\n}\n\n.site-list {\n\tpadding-left: 0;\n  margin-bottom: 2em\n}\n\n.site-list li {\n\tline-height: 1.5em;\n\tcursor: pointer;\n}\n\n.site-list li.active {\n\tfont-weight: 700;\n\tcolor: black;\n\tborder-bottom: solid 1px whitesmoke;\n}\n\n.site-description {\n\tfont-weight: 700;\n}\n\n.site-title {\n  margin: 0;\n  -webkit-transition: color 300ms ease;\n  transition: color 300ms ease;\n}\n\n.video_list__toggle {\n  list-style: none;\n  padding: 0;\n  margin: 0\n}\n\n.video_list__toggle li {\n\tdisplay: inline-block;\n\ttext-transform: capitalize;\n\tcursor: pointer;\n\tpadding: .5em 0;\n\t//border: solid 1px rgb(204, 204, 204);\n\tmargin-right: .5em;\n\twidth: 100px;\n\ttext-align: center;\n}\n\n.video_list__toggle li:not(.active) {\n\tbackground: rgb(204, 204, 204);\n}\n\n.video_list__videos {\n  list-style: none;\n  padding: 0;\n  margin: 0\n}\n\n.video_list__videos li {\n\t-webkit-transition: all 300ms ease;\n\ttransition: all 300ms ease;\n}\n\n.video_list__videos video {\n\tposition: absolute;\n\ttop: 50%;\n\tleft: 50%;\n\t-webkit-transform: translateX(-50%) translateY(-50%);\n\t        transform: translateX(-50%) translateY(-50%);\n\tborder-radius: 3px;\n\tbox-shadow: 6px 8px rgb(115, 115, 115);\n\tmax-height: 450px;\n}\n\n.social-media-links {\n}\n\n.social-media-links li {\n\tmargin-bottom: 1em;\n}", ""]);
 
 // exports
 
@@ -22724,29 +22728,23 @@ var App = function (_React$Component) {
             _react2.default.createElement(
               'h2',
               null,
-              'Contact Me'
+              'Get in Touch'
             ),
             _react2.default.createElement(
-              'form',
-              { action: 'contact.php', className: 'contact-form pure-form pure-form-stacked', method: 'post' },
+              'ul',
+              { className: 'social-media-links' },
               _react2.default.createElement(
-                'fieldset',
+                'li',
                 null,
-                _react2.default.createElement('input', { type: 'text', placeholder: 'Name', name: 'user_name' }),
-                _react2.default.createElement('input', { type: 'text', placeholder: 'Email', name: 'user_email' }),
-                _react2.default.createElement('textarea', { placeholder: 'Message', name: 'user_message', rows: '6' }),
-                _react2.default.createElement('br', null),
+                'rchristopher.gordon@gmail.com'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
                 _react2.default.createElement(
-                  'label',
-                  { htmlFor: 'request_cv', className: 'pure-checkbox' },
-                  'Request CV ',
-                  _react2.default.createElement('input', { type: 'checkbox', name: 'request_cv' })
-                ),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                  'button',
-                  { type: 'submit', className: 'pure-button pure-button-primary' },
-                  'Submit'
+                  'a',
+                  { href: 'https://github.com/rob-gordon', target: '_blank' },
+                  _react2.default.createElement('img', { src: 'src/resources/github.svg', alt: 'Github', width: '40' })
                 )
               )
             )

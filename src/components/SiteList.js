@@ -27,7 +27,7 @@ class SiteList extends React.Component {
         <li 
           key={index} 
           onClick={this.changeCurrentSite.bind(this, item.sitename)} 
-          className={item.sitename === this.props.currentSiteName ? 'active' : ''}
+          className={item.sitename === this.props.currentSiteName ? 'pure-menu-item active pure-menu-link' : 'pure-menu-item pure-menu-link'}
         >
           {item.sitename}
         </li> 
@@ -35,9 +35,11 @@ class SiteList extends React.Component {
     });
 
     return (
-      <ul className="site-list">
-        {list}
-      </ul>
+      <div className="pure-menu">
+        <ul className="site-list pure-menu-list">
+          {list}
+        </ul>
+      </div>
     )
   }//render
 };

@@ -35,8 +35,5 @@
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
-  },
-  "dependencies": {
-    "simple-line-icons": "^2.4.1"
   }
 }

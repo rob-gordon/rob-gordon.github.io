@@ -37,7 +37,7 @@ class VideoToggle extends React.Component {
         <li 
           key={index} 
           onClick={this.changeVideo.bind(this, key)} 
-          className={key === this.props.activeVideo ? 'active' : null}
+          className={key === this.props.activeVideo ? 'active pure-button pure-button-primary' : 'pure-button pure-button-primary'}
         >{key}</li>
       )
     });
@@ -125,7 +125,7 @@ class View extends React.Component {
           <div className="view__container">
             <div className="view__container__info">
               <h2 className="site-title">{site.sitename}</h2>
-              <p className="siteurl">{site.url} <a href="{site.url}"><i className="icons icon-link"></i></a></p>
+              <p className="siteurl">{site.url} <a href={site.url} target="_blank">🔗</a></p>
               <VideoToggle
                 videos={site.videos}
                 activeVideo={this.state.activeVideo}
