@@ -7,8 +7,8 @@ module.exports = {
       darkColor: '#292E74',
       tech: ['html', 'css', 'javascript', 'wordpress'],
       videos: {
-        desktop: 'videos/colorama_crop.mov',
-        mobile: 'videos/colorama_mobile.mov'
+        desktop: '/dist/videos/desktop/colorama_crop.mp4',
+        mobile: '/dist/videos/mobile/colorama_mobile.mp4'
       }
     },
     {
@@ -17,7 +17,7 @@ module.exports = {
       lightColor: '#E58E98',
       darkColor: '#45423C',
       videos: {
-        desktop: 'videos/danubesounds_desktop.mov'
+        desktop: '/dist/videos/desktop/danubesounds_desktop.mp4'
       }
     },
     {
@@ -26,8 +26,8 @@ module.exports = {
       lightColor: '#FBEE94',
       darkColor: '#F7E041',
       videos: {
-        desktop: 'videos/littlesun_desktop.mov',
-        mobile: 'videos/ls_mobile.mov'
+        desktop: '/dist/videos/desktop/littlesun_desktop.mp4',
+        mobile: '/dist/videos/mobile/ls_mobile.mp4'
       }
     },
     {
@@ -37,8 +37,8 @@ module.exports = {
       darkColor: '#000000',
       tech: ['html', 'css', 'javascript', 'wordpress'],
       videos: {
-        desktop: 'videos/ggl_desktop.mov',
-        mobile: 'videos/ggl_mobile.mov' 
+        desktop: '/dist/videos/desktop/ggl_desktop.mp4',
+        mobile: '/dist/videos/mobile/ggl_mobile.mp4' 
       }
     },
     {
@@ -47,8 +47,8 @@ module.exports = {
       lightColor: '#9089A0',
       darkColor: '#3C3C3C',
       videos: {
-        desktop: 'videos/roughbeast_desktop.mov',
-        mobile: 'videos/roughbeast_mobile.mov'
+        desktop: '/dist/videos/desktop/roughbeast_desktop.mp4',
+        mobile: '/dist/videos/mobile/roughbeast_mobile.mp4'
       }
     }
   ],
@@ -59,8 +59,8 @@ module.exports = {
       lightColor: '#CC949C',
       darkColor: '#000000',
       videos: {
-        desktop: 'videos/avcon_desktop.mov',
-        mobile: 'videos/avcon_mobile.mov'
+        desktop: '/dist/videos/desktop/avcon_desktop.mp4',
+        mobile: '/dist/videos/mobile/avcon_mobile.mp4'
       }
     },
     {
@@ -69,8 +69,8 @@ module.exports = {
       lightColor: '#A3948B',
       darkColor: '#000000',
       videos: {
-        desktop: 'videos/axis_desktop.mov',
-        mobile: 'videos/axis_mobile.mov'
+        desktop: '/dist/videos/desktop/axis_desktop.mp4',
+        mobile: '/dist/videos/mobile/axis_mobile.mp4'
       }
     },
     {
@@ -79,8 +79,8 @@ module.exports = {
       lightColor: '#8B97AF',
       darkColor: '#000000',
       videos: {
-        desktop: 'videos/criticalfuel_desktop.mov',
-        mobile: 'videos/criticalfuel_mobile.mov'
+        desktop: '/dist/videos/desktop/criticalfuel_desktop.mp4',
+        mobile: '/dist/videos/mobile/criticalfuel_mobile.mp4'
       }
     },
     {
@@ -89,8 +89,8 @@ module.exports = {
       lightColor: '#B7C4A5',
       darkColor: '#000000',
       videos: {
-        desktop: 'videos/ncworks_desktop.mov',
-        mobile: 'videos/ncworks_mobile.mov'
+        desktop: '/dist/videos/desktop/ncworks_desktop.mp4',
+        mobile: '/dist/videos/mobile/ncworks_mobile.mp4'
       }
     },
     {
@@ -99,8 +99,8 @@ module.exports = {
       lightColor: '#889BC4',
       darkColor: '#000000',
       videos: {
-        desktop: 'videos/southeastern_desktop.mov',
-        mobile: 'videos/southeastern_mobile.mov'
+        desktop: '/dist/videos/desktop/southeastern_desktop.mp4',
+        mobile: '/dist/videos/mobile/southeastern_mobile.mp4'
       }
     },
     {
@@ -109,8 +109,8 @@ module.exports = {
       lightColor: '#D5939D',
       darkColor: '#000000',
       videos: {
-        desktop: 'videos/winefeed_desktop.mov',
-        mobile: 'videos/winefeed_mobile.mov'
+        desktop: '/dist/videos/desktop/winefeed_desktop.mp4',
+        mobile: '/dist/videos/mobile/winefeed_mobile.mp4'
       }
     },
     {
@@ -119,8 +119,8 @@ module.exports = {
       lightColor: '#ABAEB9',
       darkColor: '#000000',
       videos: {
-        desktop: 'videos/trademarkproperties_desktop.mov',
-        mobile: 'videos/trademarkproperties_mobile.mov'
+        desktop: '/dist/videos/desktop/trademarkproperties_desktop.mp4',
+        mobile: '/dist/videos/mobile/trademarkproperties_mobile.mp4'
       }
     },
     {
@@ -129,8 +129,8 @@ module.exports = {
       lightColor: '#CE919A',
       darkColor: '#000000',
       videos: {
-        desktop: 'videos/trademarkres_desktop.mov',
-        mobile: 'videos/trademarkres_mobile.mov'
+        desktop: '/dist/videos/desktop/trademarkres_desktop.mp4',
+        mobile: '/dist/videos/mobile/trademarkres_mobile.mp4'
       }
     },
     {
@@ -139,8 +139,8 @@ module.exports = {
       lightColor: '#DEA496',
       darkColor: '#000000',
       videos: {
-        desktop: 'videos/tilg_desktop.mov',
-        mobile: 'videos/tilg_mobile.mov'
+        desktop: '/dist/videos/desktop/tilg_desktop.mp4',
+        mobile: '/dist/videos/mobile/tilg_mobile.mp4'
       }
     }
   ]
