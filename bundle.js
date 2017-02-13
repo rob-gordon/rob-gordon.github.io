@@ -9811,10 +9811,20 @@ var SiteList = function (_React$Component2) {
     value: function render() {
       var _this3 = this;
 
+      var itemStyle = function itemStyle(name, curName, color) {
+        return {
+          color: name === curName ? color : '#000000'
+        };
+      };
+
       var list = this.props.list.map(function (item, index) {
         return _react2.default.createElement(
           'li',
-          { key: index, onClick: _this3.changeCurrentSite.bind(_this3, item.sitename), className: item.sitename === _this3.props.currentSiteName ? 'active' : '' },
+          {
+            key: index,
+            onClick: _this3.changeCurrentSite.bind(_this3, item.sitename),
+            className: item.sitename === _this3.props.currentSiteName ? 'active' : ''
+          },
           item.sitename
         );
       });
@@ -9860,59 +9870,231 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SiteView = function (_React$Component) {
-  _inherits(SiteView, _React$Component);
+/* Displays an HTML5 Video given a Source */
+var Video = function (_React$Component) {
+  _inherits(Video, _React$Component);
 
-  function SiteView() {
-    _classCallCheck(this, SiteView);
+  function Video() {
+    _classCallCheck(this, Video);
 
-    return _possibleConstructorReturn(this, (SiteView.__proto__ || Object.getPrototypeOf(SiteView)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Video.__proto__ || Object.getPrototypeOf(Video)).apply(this, arguments));
   }
 
-  return SiteView;
+  _createClass(Video, [{
+    key: 'boxShadow',
+    value: function boxShadow() {
+      return 'lightgrey 0px 0px 0px 1px, black 0px 0px 27px -4px';
+      //return '0px 0px 0px 1px lightgrey, 6px 6px '+this.props.darkColor;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      var style = {
+        maxWidth: '100%',
+        boxShadow: this.boxShadow.call(this)
+      };
+
+      return _react2.default.createElement(
+        'video',
+        { src: this.props.src, style: style, autoPlay: true, loop: true },
+        'Sorry, your browser doesn\'t support embedded videos, but don\'t worry, you can ',
+        _react2.default.createElement(
+          'a',
+          { href: this.props.src },
+          'download it'
+        ),
+        'and watch it with your favorite video player!'
+      );
+    }
+  }]);
+
+  return Video;
 }(_react2.default.Component);
 
-var View = function (_React$Component2) {
-  _inherits(View, _React$Component2);
+var VideoToggle = function (_React$Component2) {
+  _inherits(VideoToggle, _React$Component2);
 
-  function View() {
+  function VideoToggle() {
+    _classCallCheck(this, VideoToggle);
+
+    return _possibleConstructorReturn(this, (VideoToggle.__proto__ || Object.getPrototypeOf(VideoToggle)).apply(this, arguments));
+  }
+
+  _createClass(VideoToggle, [{
+    key: 'changeVideo',
+    value: function changeVideo(key) {
+      console.log('hello');
+      this.props.toggleVideo(key);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      var videoListToggleLIs = Object.keys(this.props.videos).map(function (key, index) {
+        return _react2.default.createElement(
+          'li',
+          {
+            key: index,
+            onClick: _this3.changeVideo.bind(_this3, key),
+            className: key === _this3.props.activeVideo ? 'active' : null
+          },
+          key
+        );
+      });
+
+      return _react2.default.createElement(
+        'ul',
+        { className: 'video_list__toggle' },
+        videoListToggleLIs
+      );
+    }
+  }]);
+
+  return VideoToggle;
+}(_react2.default.Component);
+
+var VideoView = function (_React$Component3) {
+  _inherits(VideoView, _React$Component3);
+
+  function VideoView() {
+    _classCallCheck(this, VideoView);
+
+    return _possibleConstructorReturn(this, (VideoView.__proto__ || Object.getPrototypeOf(VideoView)).apply(this, arguments));
+  }
+
+  _createClass(VideoView, [{
+    key: 'render',
+    value: function render() {
+      var _this5 = this;
+
+      var container_style = {
+        backgroundColor: this.props.lightColor
+      };
+
+      var display = function display(key) {
+        return {
+          opacity: key === _this5.props.activeVideo ? '1' : '0'
+        };
+      };
+
+      var videoListLIs = Object.keys(this.props.videos).map(function (key, index) {
+        return _react2.default.createElement(
+          'li',
+          { key: index, style: display.call(_this5, key) },
+          _react2.default.createElement(Video, { src: _this5.props.videos[key], darkColor: _this5.props.darkColor })
+        );
+      });
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'video_list', style: container_style },
+        _react2.default.createElement(
+          'ul',
+          { className: 'video_list__videos' },
+          videoListLIs
+        )
+      );
+    } //render
+
+  }]);
+
+  return VideoView;
+}(_react2.default.Component); //SitePreview
+
+var View = function (_React$Component4) {
+  _inherits(View, _React$Component4);
+
+  function View(props) {
     _classCallCheck(this, View);
 
-    return _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).apply(this, arguments));
+    var _this6 = _possibleConstructorReturn(this, (View.__proto__ || Object.getPrototypeOf(View)).call(this, props));
+
+    _this6.state = {
+      activeVideo: 'desktop'
+    };
+    return _this6;
   }
 
   _createClass(View, [{
-    key: "render",
+    key: 'changeVideo',
+    value: function changeVideo(key) {
+      this.setState({
+        activeVideo: key
+      });
+    }
+  }, {
+    key: 'backgroundColor',
+    value: function backgroundColor() {
+      return this.props.site === null ? 'whitesmoke' : this.props.site.lightColor;
+    }
+  }, {
+    key: 'siteTitleColor',
+    value: function siteTitleColor() {
+      return this.props.site === null ? 'black' : this.props.site.darkColor;
+    }
+  }, {
+    key: 'render',
     value: function render() {
       var site = this.props.site;
 
+      var style = {
+        boxShadow: "inset 4px 0 " + this.backgroundColor()
+      };
+
+      var siteTitleStyle = {
+        color: this.siteTitleColor()
+      };
+
       if (site === null) {
         return _react2.default.createElement(
-          "div",
-          { id: "view" },
+          'div',
+          { id: 'view' },
           _react2.default.createElement(
-            "div",
-            { className: "view__container" },
-            "No site selected."
+            'div',
+            { className: 'view__container' },
+            'No site selected.'
           )
         );
       } else {
         return _react2.default.createElement(
-          "div",
-          { id: "view" },
+          'div',
+          { id: 'view' },
           _react2.default.createElement(
-            "div",
-            { className: "view__container" },
+            'div',
+            { className: 'view__container' },
             _react2.default.createElement(
-              "h2",
-              { className: "site-title" },
-              site.sitename
+              'div',
+              { className: 'view__container__info' },
+              _react2.default.createElement(
+                'h2',
+                { className: 'site-title' },
+                site.sitename
+              ),
+              _react2.default.createElement(
+                'p',
+                { className: 'siteurl' },
+                site.url,
+                ' ',
+                _react2.default.createElement(
+                  'a',
+                  { href: '{site.url}' },
+                  _react2.default.createElement('i', { className: 'icons icon-link' })
+                )
+              ),
+              _react2.default.createElement(VideoToggle, {
+                videos: site.videos,
+                activeVideo: this.state.activeVideo,
+                toggleVideo: this.changeVideo.bind(this)
+              })
             ),
-            _react2.default.createElement(
-              "p",
-              { className: "siteurl" },
-              site.url
-            )
+            _react2.default.createElement(VideoView, {
+              videos: site.videos,
+              darkColor: site.darkColor,
+              lightColor: site.lightColor,
+              activeVideo: this.state.activeVideo
+            })
           )
         );
       }
@@ -9936,51 +10118,133 @@ exports.default = View;
 
 module.exports = {
   "samples": [{
-    sitename: "The Global Goals Lab",
-    url: "http://globalgoalslab.org/"
-  }, {
-    sitename: "Little Sun",
-    url: "http://littlesun.com/"
-  }, {
     sitename: "Colorama",
-    url: "http://colorama.space/"
-  }, {
-    sitename: "Rough Beast Magazine",
-    url: "http://roughbeastmagazine.com/"
+    url: "http://colorama.space/",
+    lightColor: '#ACFFFD',
+    darkColor: '#292E74',
+    tech: ['html', 'css', 'javascript', 'wordpress'],
+    videos: {
+      desktop: 'videos/colorama_crop.mov',
+      mobile: 'videos/colorama_mobile.mov'
+    }
   }, {
     sitename: "Danube Sounds",
-    url: "http://danubesounds.net/"
+    url: "http://danubesounds.net/",
+    lightColor: '#E58E98',
+    darkColor: '#45423C',
+    videos: {
+      desktop: 'videos/danubesounds_desktop.mov'
+    }
+  }, {
+    sitename: "Little Sun",
+    url: "http://littlesun.com/",
+    lightColor: '#FBEE94',
+    darkColor: '#F7E041',
+    videos: {
+      desktop: 'videos/littlesun_desktop.mov',
+      mobile: 'videos/ls_mobile.mov'
+    }
+  }, {
+    sitename: "The Global Goals Lab",
+    url: "http://globalgoalslab.org/",
+    lightColor: '#E3AEA0',
+    darkColor: '#000000',
+    tech: ['html', 'css', 'javascript', 'wordpress'],
+    videos: {
+      desktop: 'videos/ggl_desktop.mov',
+      mobile: 'videos/ggl_mobile.mov'
+    }
+  }, {
+    sitename: "Rough Beast Magazine",
+    url: "http://roughbeastmagazine.com/",
+    lightColor: '#9089A0',
+    darkColor: '#3C3C3C',
+    videos: {
+      desktop: 'videos/roughbeast_desktop.mov',
+      mobile: 'videos/roughbeast_mobile.mov'
+    }
   }],
   "winnowSamples": [{
     sitename: "AVCON",
-    url: "http://www.avconusa.com/"
+    url: "http://www.avconusa.com/",
+    lightColor: '#CC949C',
+    darkColor: '#000000',
+    videos: {
+      desktop: 'videos/avcon_desktop.mov',
+      mobile: 'videos/avcon_mobile.mov'
+    }
   }, {
     sitename: "Axis Corrugated Container",
-    url: "http://www.accbox.com/"
+    url: "http://www.accbox.com/",
+    lightColor: '#A3948B',
+    darkColor: '#000000',
+    videos: {
+      desktop: 'videos/axis_desktop.mov',
+      mobile: 'videos/axis_mobile.mov'
+    }
   }, {
     sitename: "Critical Fuel Systems",
-    url: "http://criticalfuelsystems.com/"
+    url: "http://criticalfuelsystems.com/",
+    lightColor: '#8B97AF',
+    darkColor: '#000000',
+    videos: {
+      desktop: 'videos/criticalfuel_desktop.mov',
+      mobile: 'videos/criticalfuel_mobile.mov'
+    }
   }, {
     sitename: "NCWorks Certified Career Pathways",
-    url: "http://nccertifiedcareerpathways.com/"
-  }, {
-    sitename: "Science Cloud",
-    url: "https://www.sciencecloud.com/"
+    url: "http://nccertifiedcareerpathways.com/",
+    lightColor: '#B7C4A5',
+    darkColor: '#000000',
+    videos: {
+      desktop: 'videos/ncworks_desktop.mov',
+      mobile: 'videos/ncworks_mobile.mov'
+    }
   }, {
     sitename: "Southeastern Interiors",
-    url: "http://southeasterninteriors.com/"
+    url: "http://southeasterninteriors.com/",
+    lightColor: '#889BC4',
+    darkColor: '#000000',
+    videos: {
+      desktop: 'videos/southeastern_desktop.mov',
+      mobile: 'videos/southeastern_mobile.mov'
+    }
   }, {
     sitename: "The Wine Feed",
-    url: "https://thewinefeed.com/"
+    url: "https://thewinefeed.com/",
+    lightColor: '#D5939D',
+    darkColor: '#000000',
+    videos: {
+      desktop: 'videos/winefeed_desktop.mov',
+      mobile: 'videos/winefeed_mobile.mov'
+    }
   }, {
     sitename: "Trademark Properties",
-    url: "http://www.trademarkproperties.com/"
+    url: "http://www.trademarkproperties.com/",
+    lightColor: '#ABAEB9',
+    darkColor: '#000000',
+    videos: {
+      desktop: 'videos/trademarkproperties_desktop.mov',
+      mobile: 'videos/trademarkproperties_mobile.mov'
+    }
   }, {
     sitename: "Trademark Residential",
-    url: "http://www.trademarkresidential.com/"
+    url: "http://www.trademarkresidential.com/",
+    lightColor: '#CE919A',
+    darkColor: '#000000',
+    videos: {
+      desktop: 'videos/trademarkres_desktop.mov',
+      mobile: 'videos/trademarkres_mobile.mov'
+    }
   }, {
     sitename: "Triangle Industry Liaison Group",
-    url: "http://www.triangleilg.org/"
+    url: "http://www.triangleilg.org/",
+    lightColor: '#DEA496',
+    darkColor: '#000000',
+    videos: {
+      desktop: 'videos/tilg_desktop.mov',
+      mobile: 'videos/tilg_mobile.mov'
+    }
   }]
 };
 
@@ -10069,7 +10333,7 @@ exports = module.exports = __webpack_require__(53)();
 
 
 // module
-exports.push([module.i, "body {\n\tmargin: 0;\n\tpadding: 0;\n\tline-height: 1.5em;\n\tfont-family: 'Muli';\n\tbackground: whitesmoke;\n}\n\n#app {\n}\n\n#app > div {\n\tpadding: 2em;\n}\n\n#main {\n\tbackground: white;\n}\n\n#main, .view__container {\n\tmax-width: 410px;\n}\n\n#view {\n\tposition: fixed;\n\ttop: 0;\n\tright: 0;\n\tbottom: 0;\n\tleft: calc(410px + 4em);\n\tbackground: whitesmoke;\n\tborder-left: solid 1px lightgray;\n}\n\na {\n\ttext-decoration: none;\n}\n\nsection {\n\tmargin: 3em 0;\n}\n\n#about-me {\n\tmargin-top: 0;\n}\n\n.introduction {\n\tfont-size: 18px;\n}\n\n.site-list {\n\tlist-style: none;\n\tpadding-left: 0\n}\n\n.site-list li {\n\tline-height: 1.5em;\n\tcursor: pointer;\n}\n\n.site-list li.active {\n\tcolor: orangered;\n}\n\n.contact-form {\n\tbackground: black;\n\tpadding: 1em;\n\tborder: solid 1px lightgray\n}\n\n.contact-form input:not([type=checkbox]), .contact-form textarea {\n\twidth: 100%;\n}\n\n.site-info {\n\tfont-weight: 600;\n}", ""]);
+exports.push([module.i, "body {\n\tmargin: 0;\n\tpadding: 0;\n\tline-height: 1.5em;\n\t//font-family: 'Muli';\n\tbackground: whitesmoke;\n}\n\n#main, .view__container {\n  padding: 2em;\n}\n\n.video_list {\n  position: absolute;\n  top: 186px;\n  width: 100%;\n  border-top: solid 3px rgb(204, 204, 204);\n  left: 0;\n  bottom: 0;\n  background: rgb(230, 230, 230);\n  -webkit-transition: all 300ms ease;\n  transition: all 300ms ease;\n}\n\n#main {\n\tbackground: white;\n  max-width: 410px;\n}\n\n#view {\n\tposition: fixed;\n\ttop: 0;\n\tright: 0;\n\tbottom: 0;\n\tleft: calc(410px + 4em);\n\tbackground: whitesmoke;\n\tborder-left: solid 1px lightgray;\n  -webkit-transition: all 300ms ease;\n  transition: all 300ms ease;\n  overflow-y: auto;\n}\n\na {\n\ttext-decoration: none;\n  color: blue;\n}\n\nsection {\n\tmargin: 3em 0;\n}\n\n#about-me {\n\tmargin-top: 0;\n}\n\n.introduction {\n\tfont-size: 18px;\n}\n\n.site-list {\n\tlist-style: none;\n\tpadding-left: 0;\n  color: #888\n}\n\n.site-list li {\n\tline-height: 1.5em;\n\tcursor: pointer;\n\tfont-size: 1.15em;\n}\n\n.site-list li.active {\n\tfont-weight: 700;\n\tcolor: black;\n}\n\n.contact-form {\n\tbackground: whitesmoke;\n\tpadding: 1em;\n\tborder: solid 1px lightgray\n}\n\n.contact-form input:not([type=checkbox]), .contact-form textarea {\n\twidth: 100%;\n}\n\n.site-description {\n\tfont-weight: 700;\n}\n\n.site-title {\n  margin: 0;\n  -webkit-transition: color 300ms ease;\n  transition: color 300ms ease;\n}\n\n.video_list__toggle {\n  list-style: none;\n  padding: 0;\n  margin: 0\n}\n\n.video_list__toggle li {\n\tdisplay: inline-block;\n\ttext-transform: capitalize;\n\tcursor: pointer;\n\tpadding: .5em 0;\n\tborder: solid 1px rgb(204, 204, 204);\n\tmargin-right: .5em;\n\twidth: 100px;\n\ttext-align: center;\n}\n\n.video_list__toggle li.active {\n\tfont-weight: 700;\n\tbackground: rgb(204, 204, 204);\n}\n\n.video_list__videos {\n  list-style: none;\n  padding: 0;\n  margin: 0\n}\n\n.video_list__videos li {\n\t-webkit-transition: all 300ms ease;\n\ttransition: all 300ms ease;\n}\n\n.video_list__videos video {\n\tposition: absolute;\n\ttop: 50%;\n\tleft: 50%;\n\t-webkit-transform: translateX(-50%) translateY(-50%);\n\t        transform: translateX(-50%) translateY(-50%);\n\tborder-radius: 3px;\n\tbox-shadow: 6px 8px rgb(115, 115, 115);\n\tmax-height: 450px;\n}", ""]);
 
 // exports
 
@@ -22439,7 +22703,7 @@ var App = function (_React$Component) {
               'Working with ',
               _react2.default.createElement(
                 'a',
-                { href: 'http://winnowcreative.com' },
+                { href: 'http://winnowcreative.com', target: '_blank' },
                 'Winnow Creative'
               )
             ),
