@@ -16,8 +16,22 @@ class SiteList extends React.Component {
 
   render() {
 
+    const itemStyle = (name, curName, color) => {
+      return {
+        color: name === curName ? color : '#000000'
+      }
+    }
+
     const list = this.props.list.map((item, index) => {
-      return ( <li key={index} onClick={this.changeCurrentSite.bind(this, item.sitename)} className={item.sitename === this.props.currentSiteName ? 'active' : ''}>{item.sitename}</li> )
+      return ( 
+        <li 
+          key={index} 
+          onClick={this.changeCurrentSite.bind(this, item.sitename)} 
+          className={item.sitename === this.props.currentSiteName ? 'active' : ''}
+        >
+          {item.sitename}
+        </li> 
+      )
     });
 
     return (

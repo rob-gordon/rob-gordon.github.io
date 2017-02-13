@@ -2,3 +2,5 @@
 *.orig
 /*.log
 /node_modules
+/raw_videos
+

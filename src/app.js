@@ -6,6 +6,7 @@ require('purecss');
 require('./main.css');
 
 
+
 /* Data */
 import clients from './data/clients.js';
 
@@ -57,7 +58,7 @@ class App extends React.Component {
             />
           </section>
           <section id="winnow">
-            <h2>Working with <a href="http://winnowcreative.com">Winnow Creative</a></h2>
+            <h2>Working with <a href="http://winnowcreative.com" target="_blank">Winnow Creative</a></h2>
             <p className="description">The following is a selection of Wordpress sites I have developed for the design/branding firm Winnow Creative.</p>
             <SiteList 
               list={this.state.winnowSamples} 

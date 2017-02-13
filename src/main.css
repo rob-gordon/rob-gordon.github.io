@@ -7,22 +7,28 @@ body {
 	margin: 0;
 	padding: 0;
 	line-height: 1.5em;
-	font-family: 'Muli';
+	//font-family: 'Muli';
 	background: whitesmoke;
 }
 
-#app {
-	& > div {
-		padding: 2em;
-	}
+#main, .view__container {
+  padding: 2em;
+}
+
+.video_list {
+  position: absolute;
+  top: 186px;
+  width: 100%;
+  border-top: solid 3px color(whitesmoke lightness(80%));
+  left: 0;
+  bottom: 0;
+  background: color(whitesmoke lightness(90%));
+  transition: all 300ms ease;
 }
 
 #main {
 	background: white;
-}
-
-#main, .view__container {
-	max-width: 410px;
+  max-width: 410px;
 }
 
 #view {
@@ -33,10 +39,13 @@ body {
 	left: calc(410px + 4em);
 	background: whitesmoke;
 	border-left: solid 1px lightgray;
+  transition: all 300ms ease;
+  overflow-y: auto;
 }
 
 a {
 	text-decoration: none;
+  color: blue;
 }
 
 section {
@@ -47,34 +56,25 @@ section {
 	margin-top: 0;
 }
 
-.container {
-}
-
-p {
-	//font-weight: 100;
-}
-
 .introduction {
 	font-size: 18px;
-}
-
-.winnow-color {
 }
 
 .site-list {
 	list-style: none;
 	padding-left: 0;
+  color: #888;
 
 	& li {
 		line-height: 1.5em;
     cursor: pointer;
+    font-size: 1.15em;
+
     &.active {
-      color: orangered;
+      font-weight: 700;
+      color: black;
     }
 	}
-}
-
-.winnow-sites-list {
 }
 
 .contact-form {
@@ -87,6 +87,59 @@ p {
 	}
 }
 
-.site-info {
-	font-weight: 600;
+.site-description {
+	font-weight: 700;
+}
+
+.site-title {
+  margin: 0;
+  transition: color 300ms ease;
+}
+
+
+
+.video_list__toggle {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  & li {
+    display: inline-block;
+    text-transform: capitalize;
+    cursor: pointer;
+    padding: .5em 0;
+    border: solid 1px color(whitesmoke lightness(80%));
+    margin-right: .5em;
+    width: 100px;
+    text-align: center;
+
+    &.active {
+      font-weight: 700;
+      background: color(whitesmoke lightness(80%));
+    }
+
+  }
+}
+
+.video_list__videos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+
+  & li {
+    transition: all 300ms ease;
+
+  }
+
+
+  & video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 3px;
+    box-shadow: 6px 8px color(lightgray lightness(45%));
+    max-height: 450px;
+  }
 }
