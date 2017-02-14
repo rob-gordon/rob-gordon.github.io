@@ -1,4 +1,5 @@
 import React from 'react';
+import VideoView from './VideoView';
 
 class SiteListItem extends React.Component {
   render() {

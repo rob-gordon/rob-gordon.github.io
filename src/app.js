@@ -21,20 +21,45 @@ class App extends React.Component {
     this.state = {
       samples: clients.samples,
       winnowSamples: clients.winnowSamples,
-      currentSite: null
+      currentSite: null,
+      activeVideo: null,
+      showingVideoPanel: false
     }
   }
 
+  toggleVideoPanel() {
+    let show = !this.state.showingVideoPanel;
+    this.setState({
+      showingVideoPanel: show
+    })
+  }
+
+  /* Function changes which site is being viewed. Also resets the view to Desktop */
   changeCurrentSite(siteName) {
     const allClients = this.state.samples.concat(this.state.winnowSamples);
     const found = allClients.filter( (site) => {
       return site.sitename === siteName;
     });
     if (found) {
+      
       this.setState({
-        currentSite: found[0]
-      })
+        currentSite: found[0],
+        showingVideoPanel: true
+      });
+
+      let videoKeys = Object.keys(found[0]['videos']);
+      if (!videoKeys.includes(this.state.activeVideo)) {
+        this.setState({
+          activeVideo: videoKeys[0]
+        })
+      }
     }
+  }
+
+  changeActiveVideo(key) {
+    this.setState({
+      activeVideo: key
+    });
   }
 
   render () {
@@ -78,7 +103,13 @@ class App extends React.Component {
             </ul>
           </section>
         </div>
-        <View site={this.state.currentSite}/>
+        <View 
+          site={this.state.currentSite}
+          activeVideo={this.state.activeVideo}
+          toggleActiveVideo={this.changeActiveVideo.bind(this)}
+          showingVideoPanel={this.state.showingVideoPanel}
+          toggleVideoPanel={this.toggleVideoPanel.bind(this)}
+        />
       </div>
     );
   } // render
